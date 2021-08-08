@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/TulipCharts/tulipnode.svg?branch=master)](https://travis-ci.org/TulipCharts/tulipnode)
+[![Build Status](https://travis-ci.com/TulipCharts/tulipnode.svg?branch=master)](https://travis-ci.com/TulipCharts/tulipnode)
 [![Build Status](https://ci.appveyor.com/api/projects/status/ps9l8w7fxi81v2q5/branch/master?svg=true)](https://ci.appveyor.com/project/codeplea/tulipnode)
 [![npm](https://img.shields.io/npm/dw/tulind.svg)](https://www.npmjs.com/package/tulind)
 
@@ -67,6 +67,24 @@ tulind.indicators.sma.indicator([close], [3], function(err, results) {
 });
 ```
 
+Using Promise Wrapper:
+
+``` js
+
+var tulind = require('tulind');
+var { promisify } = require('util');
+
+
+//Promisify the simple moving average 
+//You can promisify any indicator and use it like this 
+const sma_async = promisify(tulind.indicators.sma.indicator);
+
+var sma_inc = async (close) => {
+	var results = await sma_async([close], [3]);
+	return results ;
+};
+
+```
 
 
 Example of calculating the Stochastic Oscillator:
